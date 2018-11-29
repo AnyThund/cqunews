@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html" charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>Document</title>
+		<!-- <base target="_blank"> -->
+		<link type="image/x-icon" rel="shortcut icon" href="">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<style type="text/css" rel="stylesheet">
+
+		</style>
+	</head>
+	<body>
+		<div id="nav">
+			<nav class="navbar navbar-inverse col-md-6 col-md-offset-3">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">简单的登录功能</a>
+					</div>
+
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#" @click="showLogin">Login</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div class="col-md-4 col-md-offset-4" v-if="show">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1 class="panel-title" style="display: inline-block;">登录框</h1>
+						<button type="button" class="close" @click="closeLogin"><span>&times;</span></button>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="inputEmail" class="col-md-2 control-label">用户名</label>
+								<div class="col-md-10">
+									<input type="email" class="form-control" id="inputEmail" placeholder="Username" v-model="loginEmail" title="123456">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="col-md-2 control-label">密码</label>
+								<div class="col-md-10">
+									<input type="password" class="form-control" id="inputPassword" placeholder="Password" v-model="loginPassword" title="123456">
+								</div>
+							</div>
+						</form>
+						<div class="row text-center">
+							<button class="btn btn-primary" @click="Login">登录</button>
+							<button class="btn btn-success">注册</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var oNav = new Vue({
+				el: "#nav",
+				data: {
+					show: false,
+					loginEmail: "",
+					loginPassword: ""
+				},
+				methods: {
+					showLogin: function() {
+						this.show = !this.show;
+					},
+					closeLogin: function() {
+						this.show = false;
+					},
+					Login: function() {
+						if(this.loginEmail == "" || this.loginPassword == "") {return }
+						if(this.loginEmail == "123456" && this.loginPassword == "123456") {
+							alert("登录成功!");
+						} else {
+							alert("邮箱或密码不正确!");
+						}
+						this.show = false;
+						this.loginEmail = "";
+						this.loginPassword = "";
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
