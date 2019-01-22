@@ -1,0 +1,26 @@
+*{margin: 0;padding: 0;}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+#container{
+    width:700px;
+}
+#container form{
+    margin-top: 220px;
+}
+#container form #baidu-search, #container form span input{
+    opacity: 0.5;
+}
+#container form #baidu-search:focus, #container form span input:hover{
+    opacity: 1;
+}
+#container form .has-feedback .form-control-feedback{
+    z-index: 3;
+    right: 80px;
+}
+#container #btn-group{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
