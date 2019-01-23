@@ -38,24 +38,24 @@ var vCon = new Vue({
 		pic_info: null,
     },
     methods: {
-        showPrePic: () => { // 前一天的图片, 最多可查看前六天
+        showPrePic: function() { // 前一天的图片, 最多可查看前三天
 			console.log(this.now_pic);
-			if(this.now_pic<6){
+			if(this.now_pic<3){
 				let i = ++this.now_pic;
 				let url = 'https://jsonp.afeld.me/?url=https%3A%2F%2Fcn.bing.com%2FHPImageArchive.aspx%3Fformat%3Djs%26idx%3D'+i+'%26n%3D1';
 				getWallpaper(url);
 			}else{
-				this.now_pic = 6;
+				this.now_pic = 3;
 			}
         },
-        showNextPic: () => { // 后一天的图片, 最多可查看后六天
+        showNextPic: function() { // 后一天的图片, 最多可查看后一天
 			console.log(this.now_pic);
-			if(this.now_pic>-6){
+			if(this.now_pic>-1){
 				let i = --this.now_pic;
 				let url = 'https://jsonp.afeld.me/?url=https%3A%2F%2Fcn.bing.com%2FHPImageArchive.aspx%3Fformat%3Djs%26idx%3D'+i+'%26n%3D1';
 				getWallpaper(url);
 			}else{
-				this.now_pic = -6;
+				this.now_pic = -1;
 			}
         }
     }
