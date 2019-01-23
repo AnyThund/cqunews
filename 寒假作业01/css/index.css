@@ -12,6 +12,7 @@ html,body{
 #container form #baidu-search, #container form span input{
     opacity: 0.5;
 }
+/* 搜索框和搜索按钮实现了简单的动画效果 */
 #container form #baidu-search:focus, #container form span input:hover{
     opacity: 1;
 }

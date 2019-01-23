@@ -1,5 +1,9 @@
+/*
+    必应的官方api有跨域问题, 直接引用不了, 所以先通过jsonp.afeld进行代理获取图片的url
+ */
 // let url = 'http://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1';
 let url = 'https://jsonp.afeld.me/?url=https%3A%2F%2Fcn.bing.com%2FHPImageArchive.aspx%3Fformat%3Djs%26idx%3D0%26n%3D1';
+/* 利用ajax获取url */
 function getWallpaper(url){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
@@ -26,6 +30,7 @@ function wallpaper(data){
 }
 getWallpaper(url);
 
+/* 定义vue控件, 实现向前或向后切换每日一图的背景 */
 var vCon = new Vue({
     el: '#container',
     data: {
@@ -33,7 +38,7 @@ var vCon = new Vue({
 		pic_info: null,
     },
     methods: {
-        showPrePic: function(){
+        showPrePic: () => { // 前一天的图片, 最多可查看前六天
 			console.log(this.now_pic);
 			if(this.now_pic<6){
 				let i = ++this.now_pic;
@@ -43,7 +48,7 @@ var vCon = new Vue({
 				this.now_pic = 6;
 			}
         },
-        showNextPic: function(){
+        showNextPic: () => { // 后一天的图片, 最多可查看后六天
 			console.log(this.now_pic);
 			if(this.now_pic>-6){
 				let i = --this.now_pic;
