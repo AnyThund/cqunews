@@ -1,8 +1,8 @@
 *{margin: 0;padding: 0;}
-html,body{
+/* html,body{
     width: 100%;
     height: 100%;
-}
+} */
 #container{
     width:700px;
 }
@@ -13,7 +13,8 @@ html,body{
     opacity: 0.5;
 }
 /* 搜索框和搜索按钮实现了简单的动画效果 */
-#container form #baidu-search:focus, #container form span input:hover{
+#container form #baidu-search:focus,
+#container form span input:hover{
     opacity: 1;
 }
 #container form .has-feedback .form-control-feedback{
@@ -24,4 +25,17 @@ html,body{
     position: fixed;
     bottom: 0px;
     right: 0px;
+    z-index: 999;
+}
+
+#weather .weather{
+    background-color: white;
+    border: 0.25rem solid black;
+    border-radius: 2rem;
+    margin: 2rem;
+    padding: 0 2rem 3rem;
+}
+#weather .weather .row{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }

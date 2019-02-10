@@ -5,14 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
-	<!-- 引用外部样式 -->
-	<link rel="stylesheet" href="./css/index.css">
 	<!-- 引用bootstrap -->
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<!-- 引用阿里图标 -->
 	<link rel="stylesheet" href="https://at.alicdn.com/t/font_1027330_p8eah5ltlun.css">
+	<!-- 引用外部样式 -->
+	<link rel="stylesheet" href="./css/index.css">
 	<!-- 引用jQuery和vue.js -->
 	<script src="./js/jquery-3.3.1.min.js"></script>
+	<script src="./js/jquery.mousewheel.min.js"></script>
 	<script src="./js/vue.js"></script>
 </head>
 <body>
@@ -44,6 +45,37 @@
 					<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 				</button>
 			</div>
+		</div><!-- /btn-group -->
+	</div>
+	<div id="weather" class="container">
+		<div class="weather">
+			<h1>天气查询</h1>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="input-group">
+						<input class="form-control" type="text" id="city" placeholder="请输入城市名...">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="submit" @click="getWeather">查询</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<table class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>{{ city }} 未来一周天气情况</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="weather in weathers">
+						<td>{{ weather.date }}</td>
+						<td>{{ weather.type }}</td>
+						<td>{{ weather.low }}</td>
+						<td>{{ weather.high }}</td>
+						<td>{{ weather.fengxiang }}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<!-- 引用外部脚本 -->
